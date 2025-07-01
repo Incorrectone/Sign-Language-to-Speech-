@@ -12,7 +12,7 @@ label_encoder = LabelEncoder()
 label_encoder.fit(unique_words)
 print("Label encoder initialized with classes:", label_encoder.classes_)
 
-model_filename = 'demo_lstm_85.h5'
+model_filename = 'Models archive\\CNN_LSTM_v1.h5'
 try:
     model = load_model(model_filename)
     print(f"Successfully loaded the model '{model_filename}'.")
@@ -61,6 +61,7 @@ def main():
         return
 
     with mp_holistic.Holistic(
+        model_complexity=2,
         min_detection_confidence=0.5,
         min_tracking_confidence=0.5) as holistic_model:
 
@@ -73,13 +74,13 @@ def main():
         
         frame_delay_ms = 1
         
-        confidence_threshold = 0.8
+        confidence_threshold = 0.45
 
         last_time = time.time()
         fps = 0
         
         frame_count = 0
-        frame_interval = 3  # Process one frame out of every 5. Increase this number to slow down further.
+        frame_interval = 1  # Process one frame out of every 5. Increase this number to slow down further.
 
         print("Starting live inference demo. Perform a gesture. Press 'q' to quit.")
 
