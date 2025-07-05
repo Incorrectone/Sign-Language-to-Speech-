@@ -4,7 +4,7 @@ import numpy as np
 
 def extract_landmarks(frame, holistic_model):
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    rgb_frame.flags.writeable = False 
+    rgb_frame.flags.writeable = False
     
     results = holistic_model.process(rgb_frame)
     rgb_frame.flags.writeable = True
